@@ -13,11 +13,11 @@ org 100h
     MOV DI, 0
 
 
-    MOV DL, 35
-    MOV byte[200h], 20
-    MOV byte[201h], 22
-    MOV byte[202h], 24
-    MOV byte[203h], 26
+    MOV DL, 25
+    MOV byte[200h], 10
+    MOV byte[201h], 12
+    MOV byte[202h], 14
+    MOV byte[203h], 16
 
 
     call modotexto
@@ -47,7 +47,7 @@ org 100h
         MOV DI, 0
         INC DH
         INC DH
-        MOV DL, 35
+        MOV DL, 25
         RET
 
     primernombre: 
@@ -58,10 +58,10 @@ org 100h
         INC SI 
         INC DL 
         INC DI 
-        CMP SI, 9 
+        CMP SI, 2
         JB primernombre
         call siguientefila
-        jmp esperartecla
+        jmp segundonombre
 
 
     segundonombre:
@@ -72,10 +72,10 @@ org 100h
         INC SI 
         INC DL 
         INC DI 
-        CMP SI, 17 
+        CMP SI, 7 
         JB segundonombre
         call siguientefila
-        jmp esperartecla
+        jmp primerapellido
 
     primerapellido:
         MOV DH, [202h]
@@ -85,10 +85,10 @@ org 100h
         INC SI 
         INC DL 
         INC DI 
-        CMP SI, 26 
+        CMP SI, 12
         JB primerapellido
         call siguientefila
-        jmp esperartecla        
+        jmp segundoapellido      
 
     segundoapellido:
         MOV DH, [203h]
@@ -98,7 +98,7 @@ org 100h
         INC SI 
         INC DL 
         INC DI 
-        CMP SI, 33
+        CMP SI, 17
         JB segundoapellido
         call siguientefila
         jmp esperartecla
